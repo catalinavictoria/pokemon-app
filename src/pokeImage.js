@@ -1,3 +1,4 @@
+import './pokeImage.css';
 import React from 'react';
 
 const imagePath = "https://pokeres.bastionbot.org/images/pokemon/";
@@ -33,6 +34,11 @@ class PokeImage extends React.Component {
       pokeName2: ""
     }
   }//constructor
+
+  //this hook loads the function when the pokeImage component is first mounted
+  componentDidMount() {
+    this.getPokemonNames();
+  }
 
   //function for calling the API
   getPokemonNames() {
@@ -81,16 +87,16 @@ class PokeImage extends React.Component {
   }
 
   render() {
-
     return(
-      <div>
-      <div className="Image" onload={this.getPokemonNames()}>
-        <img src={`${imagePath}${this.state.pokeId}.png`} alt="pokemon-image" width="400" height="400" />
-      </div>
-      <div clasName="PokeBotones">
-        <button class="button1">{this.state.pokeName}</button>
-        <button class="button2">{this.state.pokeName2}</button>
-      </div>
+      <div className="poke-image">
+        <h1 className="titulo">Guess The Pokemon!</h1>
+        <div className="image">
+          <img className="the-image" src={`${imagePath}${this.state.pokeId}.png`} alt="pokemon-image" width="400" height="400" />
+        </div>
+        <div className="poke-botones">
+          <button className="button1">{this.state.pokeName}</button>
+          <button className="button2">{this.state.pokeName2}</button>
+        </div>
       </div>
     );
   }

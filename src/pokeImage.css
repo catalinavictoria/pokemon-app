@@ -1,0 +1,48 @@
+.poke-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titulo {
+  color: #FFFFFF;
+  margin: 40px;
+}
+
+.the-image {
+  margin: 40px;
+}
+
+.button1, .button2 {
+  display: inline-block;
+  padding: 0.3em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 5em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-weight: 300;
+  color: #000000;
+  background-color: #3386FF;
+  text-align: center;
+  transition: all 0.2s;
+}
+.button1:hover {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+@media all and (max-width:30em) {
+  .button1 {
+    display: block;
+    margin-left: 0.4em auto;
+  }
+}
+.button2:hover {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+@media all and (max-width:30em) {
+  .button2 {
+    display: block;
+    margin-left: 0.4em auto;
+  }
+}
