@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import PokeImage from './pokeImage.js';
+import Timer from "react-compound-timer";
 
 
 //pokemon app component

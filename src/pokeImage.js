@@ -30,7 +30,7 @@ class PokeImage extends React.Component {
   //this hook loads the function when the pokeImage component is first mounted
   componentDidMount() {
     this.getPokemonNames();
-  }
+  }//componentDidMount
 
   //function for getting random ids and making request to api
   getPokemonNames() {
@@ -104,8 +104,8 @@ class PokeImage extends React.Component {
         console.log("correct id: " + correctId);
         console.log(p1);
         console.log(p2);
-        console.log(name1);
-        console.log(name2);
+        console.log("name1 is " + name1);
+        console.log("name2 is " + name2);
         console.log(correctName);
 
         //setting the state of the Component
@@ -115,16 +115,24 @@ class PokeImage extends React.Component {
           correctPokeName: correctName
         });
       })
-    })
-    //
-    // //setting the state
-    // this.setState({
-    //   correctPokeName: correctName
-    // });
-    //checking everything
+    })//end request to api
+  }//getPokemonNames
 
-
-  }
+  /*function for handling buttons
+  handleClick(aName) {
+    let nombreCorrecto = this.state.correctPokeName;
+    if (aName === nombreCorrecto) {
+      return(
+        <p className="correct-answer">Yay! You got it!</p>
+      )
+    }
+    else {
+      return(
+        <p className="incorrect-answer">Noup :( It's {this.state.correctPokeName}</p>
+      )
+    }
+  }//handleClick
+  */
 
   render() {
     return(
@@ -134,8 +142,12 @@ class PokeImage extends React.Component {
           <img className="the-image" src={`${imagePath}${this.state.pokeId}.png`} alt="pokemon" width="400" height="400" />
         </div>
         <div className="poke-botones">
-          <button className="button1">{this.state.pokeName1}</button>
-          <button className="button2">{this.state.pokeName2}</button>
+          <button className="button1"
+          value={this.state.pokeName1}>{this.state.pokeName1}</button>
+          <button className="button2"
+          value={this.state.pokeName2}>{this.state.pokeName2}</button>
+        </div>
+        <div className="right-or-wrong">
         </div>
       </div>
     );
