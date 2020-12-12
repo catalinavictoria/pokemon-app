@@ -23,7 +23,10 @@ class PokeImage extends React.Component {
       pokeImageId: "",
       pokeName1: "",
       pokeName2: "",
-
+      correctAnswer: false,
+      message: false,
+      correctCounter: "",
+      incorrectCounter: ""
     }
   }//constructor
 
@@ -46,7 +49,6 @@ class PokeImage extends React.Component {
     while (p1 === p2) {
       p2 = getRandomInt(1, 887);
     }
-
     //setting correct pokemon id
     if (getRandomInt(1, 2) === 1) {
       correctId = p1;
@@ -55,6 +57,9 @@ class PokeImage extends React.Component {
       correctId = p2;
     }
 
+    console.log("p1 = " + p1);
+    console.log("p2 = " + p2);
+    console.log("correctId = " + correctId);
     //changing the state of the component
     this.setState({
       pokeId: p1,
@@ -77,7 +82,7 @@ class PokeImage extends React.Component {
     .then((data) => {
       //variable that stores the name of the pokemon
       name1 = data.name;
-      console.log(name1);
+      // console.log(name1);
       //making request for second pokemon name
       fetch(`${pokePath}${p2}`)
       .then((response) => {
@@ -92,7 +97,7 @@ class PokeImage extends React.Component {
       .then((data) => {
         //variable that stores the name of the pokemon
         name2 = data.name;
-        console.log(name2);
+        // console.log(name2);
         //if statement for setting state of correct pokemon name
         if (p1 === correctId) {
           correctName = name1;
@@ -101,12 +106,12 @@ class PokeImage extends React.Component {
           correctName = name2;
         }
         //checking everything
-        console.log("correct id: " + correctId);
-        console.log(p1);
-        console.log(p2);
-        console.log("name1 is " + name1);
-        console.log("name2 is " + name2);
-        console.log(correctName);
+        // console.log("correct id: " + correctId);
+        // console.log(p1);
+        // console.log(p2);
+        console.log("name1 = " + name1);
+        console.log("name2 = " + name2);
+        console.log("correctName = " + correctName);
 
         //setting the state of the Component
         this.setState({
@@ -118,36 +123,51 @@ class PokeImage extends React.Component {
     })//end request to api
   }//getPokemonNames
 
-  /*function for handling buttons
+  //function for handling buttons
   handleClick(aName) {
+    //checking if the user clicked the button with correct answer
     let nombreCorrecto = this.state.correctPokeName;
     if (aName === nombreCorrecto) {
-      return(
-        <p className="correct-answer">Yay! You got it!</p>
-      )
+      this.setState((prevState) => ({
+        message: <p className="incorrect-answer">Yay! You got it!</p>,
+        correctCounter: prevState.correctCounter + 1
+      }));
     }
     else {
-      return(
-        <p className="incorrect-answer">Noup :( It's {this.state.correctPokeName}</p>
-      )
+      this.setState((prevState) => ({
+        message: <p className="incorrect-answer">Noup :( It's {this.state.correctPokeName}</p>,
+        incorrectCounter: prevState.incorrectCounter + 1
+      }));
     }
+    //set timeout for re-rendering and getting a new Pokemon
+    setTimeout(() => {
+      //set message to be empty again
+      this.setState({
+        message: <p className="answer"></p>
+      })
+      //re-render the component
+      this.getPokemonNames();
+    }, 2000);
+
+    console.log(this.state.correctCounter);
+    console.log(this.state.incorrectCounter);
   }//handleClick
-  */
 
   render() {
     return(
       <div className="poke-image">
         <h1 className="titulo">Guess The Pokemon!</h1>
         <div className="image">
-          <img className="the-image" src={`${imagePath}${this.state.pokeId}.png`} alt="pokemon" width="400" height="400" />
+          <img className="the-image" src={`${imagePath}${this.state.correctPokeId}.png`} alt="pokemon" width="400" height="400" />
         </div>
         <div className="poke-botones">
           <button className="button1"
-          value={this.state.pokeName1}>{this.state.pokeName1}</button>
+          value={this.state.pokeName1} onClick={() => this.handleClick(this.state.pokeName1)}>{this.state.pokeName1}</button>
           <button className="button2"
-          value={this.state.pokeName2}>{this.state.pokeName2}</button>
+          value={this.state.pokeName2} onClick={() => this.handleClick(this.state.pokeName2)}>{this.state.pokeName2}</button>
         </div>
         <div className="right-or-wrong">
+          {this.state.message}
         </div>
       </div>
     );
