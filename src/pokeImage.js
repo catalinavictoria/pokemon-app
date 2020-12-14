@@ -25,8 +25,8 @@ class PokeImage extends React.Component {
       pokeName2: "",
       correctAnswer: false,
       message: false,
-      correctCounter: "",
-      incorrectCounter: ""
+      correctCounter: 0,
+      incorrectCounter: 0
     }
   }//constructor
 
