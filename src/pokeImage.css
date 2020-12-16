@@ -2,15 +2,36 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: "Tahoma";
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.the-timer {
+  margin: 15px;
 }
 
 .titulo {
   color: #FFFFFF;
-  margin: 40px;
+  margin: 10px;
+}
+
+.counters {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.correct, .incorrect {
+  margin: 2px;
 }
 
 .the-image {
-  margin: 40px;
+  margin: 10px;
 }
 
 .button1, .button2 {
@@ -21,6 +42,7 @@
   box-sizing: border-box;
   text-decoration: none;
   font-size: 18px;
+  font-family: "Tahoma";
   color: #000000;
   background-color: #3386FF;
   text-align: center;
@@ -45,4 +67,9 @@
     display: block;
     margin-left: 0.4em auto;
   }
+}
+
+.right-or-wrong {
+  color: #FFFFFF;
+  font-size: 25px;
 }

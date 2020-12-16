@@ -1,7 +1,6 @@
 import './App.css';
 import React from 'react';
 import PokeImage from './pokeImage.js';
-import Timer from "react-compound-timer";
 
 
 //pokemon app component
@@ -26,7 +25,8 @@ class PokemonApp extends React.Component {
     }
     return(
       <div className="start-game">
-        <h1 className="titulo">Guess the Pokémon!</h1>
+        <img className="poke-logo" src="http://pngimg.com/uploads/pokemon_logo/pokemon_logo_PNG3.png" width="442" height="162"/>
+        <h1 className="titulo">Guess the Pokémon</h1>
         <button className="btn" onClick={this.displayImage}>Start Game</button>
       </div>
     );

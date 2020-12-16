@@ -1,5 +1,6 @@
 import './pokeImage.css';
 import React from 'react';
+import Timer from "react-compound-timer";
 
 const imagePath = "https://pokeres.bastionbot.org/images/pokemon/";
 const pokePath = "https://pokeapi.co/api/v2/pokemon/";
@@ -42,11 +43,12 @@ class PokeImage extends React.Component {
     let correctId;
     let name1;
     let name2;
+    let nonImagePokemones = [413, 641];
     // generate two random ids
     let p1 = getRandomInt(1, 887);
     let p2 = getRandomInt(1, 887);
     //while loop for getting a new id that's not the same as the one we already have
-    while (p1 === p2) {
+    while (p1 === p2 && (nonImagePokemones.includes(p1) || nonImagePokemones.includes(p2))) {
       p2 = getRandomInt(1, 887);
     }
     //setting correct pokemon id
@@ -148,17 +150,31 @@ class PokeImage extends React.Component {
       //re-render the component
       this.getPokemonNames();
     }, 2000);
-
-    console.log(this.state.correctCounter);
-    console.log(this.state.incorrectCounter);
   }//handleClick
 
   render() {
     return(
       <div className="poke-image">
-        <h1 className="titulo">Guess The Pokemon!</h1>
+        <div className="title">
+          <div className="timer">
+            <Timer className="the-timer">
+              <Timer.Hours /> hours<br/>
+              <Timer.Minutes /> minutes<br/>
+              <Timer.Seconds /> seconds
+            </Timer>
+          </div>
+          <img clasName="pokeball" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/029b8bd9-cb5a-41e4-9c7e-ee516face9bb/dayo3ow-7ac86c31-8b2b-4810-89f2-e6134caf1f2d.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMDI5YjhiZDktY2I1YS00MWU0LTljN2UtZWU1MTZmYWNlOWJiXC9kYXlvM293LTdhYzg2YzMxLThiMmItNDgxMC04OWYyLWU2MTM0Y2FmMWYyZC5naWYifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.LJBxDkRocQStjZpmj9Injfv73mG2SQZ8X6HNdlP5WHw"
+          width="100" height="100" />
+          <h1 className="titulo">Guess The Pokemon</h1>
+          <img clasName="pokeball" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/029b8bd9-cb5a-41e4-9c7e-ee516face9bb/dayo3ow-7ac86c31-8b2b-4810-89f2-e6134caf1f2d.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMDI5YjhiZDktY2I1YS00MWU0LTljN2UtZWU1MTZmYWNlOWJiXC9kYXlvM293LTdhYzg2YzMxLThiMmItNDgxMC04OWYyLWU2MTM0Y2FmMWYyZC5naWYifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.LJBxDkRocQStjZpmj9Injfv73mG2SQZ8X6HNdlP5WHw"
+          width="100" height="100" />
+          <div className="counters">
+            <p className="correct">Correct: {this.state.correctCounter}</p>
+            <p className="incorrect">Incorrect: {this.state.incorrectCounter}</p>
+          </div>
+        </div>
         <div className="image">
-          <img className="the-image" src={`${imagePath}${this.state.correctPokeId}.png`} alt="pokemon" width="400" height="400" />
+          <img className="the-image" src={`${imagePath}${this.state.correctPokeId}.png`} alt="pokemon" width="350" height="350" />
         </div>
         <div className="poke-botones">
           <button className="button1"
