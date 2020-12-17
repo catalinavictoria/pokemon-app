@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Pokémon React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## About the Project
 
-In the project directory, you can run:
+This game was built as the final project for my Web Application Development class.
 
-### `npm start`
+In this game, the user is presented with a Pokémon image and two buttons with different names on them, and the user has to make their best guess to correctly match the Pokémon image with the game. It also shows counters for correct and incorrect guesses and a timer.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+For rendering the images, I used the [PokeRes API](https://pokeres.bastionbot.org/images/pokemon/1.png) and for the names I used the [PokéAPI](https://pokeapi.co/).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+A great resource for this project was this [PokéAPI Guide](http://pokeapi-how.appspot.com/) by Dennis Tat. Althought it was written using the V1 of the PokéAPI, it was useful to understand how to get the information from the API using JavaScript and looking at the different keys within the JSON objects.
 
-### `npm test`
+## Motivation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Getting more familiar with making GET requests to an API and how to successfully show and use the information retreieved from it on the app's client-side. Besides that, I wanted to have more experience building single-page React applications without using an online development environment.
 
-### `npm run build`
+## Build Status
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The main features of the game are already finished.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+I'll be working on adding the following characteristics in the near future:
+* Stop counter once the user clicks the 'Finish game' button.
+* Show stats of the game in alert displayed when the user clicks 'Finish game'.
+* Make GET resquests to the PokéAPI to get descriptions of the Pokémon that the user guesses correctly and show them alongside the correct message.
+* Host the game on GitHub pages.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Screenshots
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Alt text](https://user-images.githubusercontent.com/56621823/102427243-ce77d880-3fc5-11eb-85e3-3403d543e721.png)
+![Alt text](https://user-images.githubusercontent.com/56621823/102427265-d9326d80-3fc5-11eb-94b9-77256365b9cd.png)
+![Alt text](https://user-images.githubusercontent.com/56621823/102427285-e3546c00-3fc5-11eb-9504-41a74d06be8d.png)
+![Alt text](https://user-images.githubusercontent.com/56621823/102427306-ec453d80-3fc5-11eb-98e7-0fe24ad24004.png)
+![Alt text](https://user-images.githubusercontent.com/56621823/102427328-f6673c00-3fc5-11eb-9265-2c628e03281d.png)
