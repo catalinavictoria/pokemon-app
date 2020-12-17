@@ -1,6 +1,7 @@
 import './pokeImage.css';
 import React from 'react';
 import Timer from "react-compound-timer";
+import PokemonApp from './App.js'
 
 const imagePath = "https://pokeres.bastionbot.org/images/pokemon/";
 const pokePath = "https://pokeapi.co/api/v2/pokemon/";
@@ -27,7 +28,9 @@ class PokeImage extends React.Component {
       correctAnswer: false,
       message: false,
       correctCounter: 0,
-      incorrectCounter: 0
+      incorrectCounter: 0,
+      buttonState: false,
+      newGame: false
     }
   }//constructor
 
@@ -38,12 +41,18 @@ class PokeImage extends React.Component {
 
   //function for getting random ids and making request to api
   getPokemonNames() {
+    //enable the buttons again
+    this.setState({
+      buttonState: false,
+      newGame: false
+    });
+
     //variables
     let correctName;
     let correctId;
     let name1;
     let name2;
-    let nonImagePokemones = [413, 641];
+    let nonImagePokemones = [413, 641, 585, 849, 877, 745];
     // generate two random ids
     let p1 = getRandomInt(1, 887);
     let p2 = getRandomInt(1, 887);
@@ -131,36 +140,54 @@ class PokeImage extends React.Component {
     let nombreCorrecto = this.state.correctPokeName;
     if (aName === nombreCorrecto) {
       this.setState((prevState) => ({
-        message: <p className="incorrect-answer">Yay! You got it!</p>,
+        message: <p className="answer">Yay! You got it!</p>,
         correctCounter: prevState.correctCounter + 1
       }));
     }
     else {
       this.setState((prevState) => ({
-        message: <p className="incorrect-answer">Noup :( It's {this.state.correctPokeName}</p>,
+        message: <p className="answer">Noup :( It's {this.state.correctPokeName}</p>,
         incorrectCounter: prevState.incorrectCounter + 1
       }));
     }
+    //disabled the buttons
+    this.setState({
+      buttonState: true
+    });
     //set timeout for re-rendering and getting a new Pokemon
     setTimeout(() => {
       //set message to be empty again
       this.setState({
         message: <p className="answer"></p>
       })
-      //re-render the component
+      //re-render
       this.getPokemonNames();
     }, 2000);
   }//handleClick
 
+  //finishing the game
+  handleFinishGame() {
+    //show an alert with number of pokémon correctly guessed
+    alert(`Good game! You guessed ${this.state.correctCounter} Pokémon correctly!`);
+    //set state for new game
+    this.setState({
+      newGame: true
+    });
+  }
+
   render() {
+    if (this.state.newGame) {
+      return <PokemonApp />
+    }
+
     return(
       <div className="poke-image">
         <div className="title">
           <div className="timer">
             <Timer className="the-timer">
-              <Timer.Hours /> hours<br/>
-              <Timer.Minutes /> minutes<br/>
-              <Timer.Seconds /> seconds
+                <Timer.Hours /> hours<br/>
+                <Timer.Minutes /> minutes<br/>
+                <Timer.Seconds /> seconds
             </Timer>
           </div>
           <img clasName="pokeball" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/029b8bd9-cb5a-41e4-9c7e-ee516face9bb/dayo3ow-7ac86c31-8b2b-4810-89f2-e6134caf1f2d.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMDI5YjhiZDktY2I1YS00MWU0LTljN2UtZWU1MTZmYWNlOWJiXC9kYXlvM293LTdhYzg2YzMxLThiMmItNDgxMC04OWYyLWU2MTM0Y2FmMWYyZC5naWYifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.LJBxDkRocQStjZpmj9Injfv73mG2SQZ8X6HNdlP5WHw"
@@ -177,13 +204,22 @@ class PokeImage extends React.Component {
           <img className="the-image" src={`${imagePath}${this.state.correctPokeId}.png`} alt="pokemon" width="350" height="350" />
         </div>
         <div className="poke-botones">
-          <button className="button1"
-          value={this.state.pokeName1} onClick={() => this.handleClick(this.state.pokeName1)}>{this.state.pokeName1}</button>
-          <button className="button2"
-          value={this.state.pokeName2} onClick={() => this.handleClick(this.state.pokeName2)}>{this.state.pokeName2}</button>
+          <button
+          className="button1"
+          disabled={this.state.buttonState}
+          value={this.state.pokeName1}
+          onClick={() => this.handleClick(this.state.pokeName1)}>{this.state.pokeName1}</button>
+          <button
+          className="button2"
+          disabled={this.state.buttonState}
+          value={this.state.pokeName2}
+          onClick={() => this.handleClick(this.state.pokeName2)}>{this.state.pokeName2}</button>
         </div>
         <div className="right-or-wrong">
           {this.state.message}
+        </div>
+        <div className="finish-game">
+          <button className="finish" disabled={this.state.buttonState} onClick={() => this.handleFinishGame()}>Finish game</button>
         </div>
       </div>
     );

@@ -34,7 +34,7 @@
   margin: 10px;
 }
 
-.button1, .button2 {
+button {
   display: inline-block;
   padding: 0.3em 1.2em;
   margin: 0 0.3em 0.3em 0;
@@ -67,6 +67,20 @@
     display: block;
     margin-left: 0.4em auto;
   }
+}
+.finish:hover {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+@media all and (max-width:30em) {
+  .finish {
+    display: block;
+    margin-left: 0.4em auto;
+  }
+}
+
+button:disabled {
+  color: #3386FF;
 }
 
 .right-or-wrong {
