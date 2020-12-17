@@ -22,5 +22,12 @@ I'll be working on adding the following characteristics in the near future:
 * Stop counter once the user clicks the 'Finish game' button.
 * Show stats of the game in alert displayed when the user clicks 'Finish game'.
 * Make GET resquests to the PokéAPI to get descriptions of the Pokémon that the user guesses correctly and show them alongside the correct message.
+* Host the game on GitHub pages.
 
 ## Screenshots
+
+![Alt text](https://user-images.githubusercontent.com/56621823/102427243-ce77d880-3fc5-11eb-85e3-3403d543e721.png)
+![Alt text](https://user-images.githubusercontent.com/56621823/102427265-d9326d80-3fc5-11eb-94b9-77256365b9cd.png)
+![Alt text](https://user-images.githubusercontent.com/56621823/102427285-e3546c00-3fc5-11eb-9504-41a74d06be8d.png)
+![Alt text](https://user-images.githubusercontent.com/56621823/102427306-ec453d80-3fc5-11eb-98e7-0fe24ad24004.png)
+![Alt text](https://user-images.githubusercontent.com/56621823/102427328-f6673c00-3fc5-11eb-9265-2c628e03281d.png)
