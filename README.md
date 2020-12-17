@@ -10,6 +10,8 @@ In this game, the user is presented with a Pokémon image and two buttons with d
 
 For rendering the images, I used the [PokeRes API](https://pokeres.bastionbot.org/images/pokemon/1.png) and for the names I used the [PokéAPI](https://pokeapi.co/).
 
+A great resource for this project was this [PokéAPI Guide](http://pokeapi-how.appspot.com/) by Dennis Tat. Althought it was written using the V1 of the PokéAPI, it was useful to understand how to get the information from the API using JavaScript and looking at the different keys within the JSON objects.
+
 ## Motivation
 
 Getting more familiar with making GET requests to an API and how to successfully show and use the information retreieved from it on the app's client-side. Besides that, I wanted to have more experience building single-page React applications without using an online development environment.
